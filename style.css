@@ -1,108 +1,459 @@
+/* ========================================================
+   G(url)Hood — Sienna Suarez, 2026
+   ======================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Times+New+Roman&display=swap');
 
-body {
-  background: url("./medias/desktop.jpeg") repeat;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  color: white;
-  margin: 0;
-  padding: 0;
+:root {
+  --pink: hotpink;
+  --lightpink: #ffb6c1;
+  --babypink: #ffe4ec;
+  --blue: #CFF8F8;
+  --darkblue: #a8e6e6;
+  --gray: #c0c0c0;
+  --darkgray: #808080;
+  --white: #ffffff;
+  --black: #000000;
+  --red: #ff0000;
+  --titlebar: linear-gradient(to right, #ff69b4, #ff99cc, #ffb6c1);
+  --desktop-bg: #1a1a2e;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── SPLASH ── */
+#splash {
+  position: fixed;
+  inset: 0;
+  background: var(--pink);
+  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  font-family: 'Times New Roman', serif;
+  color: white;
+  text-align: center;
+  animation: splashFadeOut 0.8s ease forwards;
+  animation-delay: 3s;
+  pointer-events: none;
+}
+#splash h1 {
+  font-size: 3.5rem;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.3s;
+}
+#splash p {
+  font-size: 1rem;
+  margin-top: 1rem;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.8s;
+  font-style: italic;
+}
+@keyframes splashFadeOut {
+  to { opacity: 0; pointer-events: none; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── DESKTOP ── */
+#desktop {
+  position: relative;
+  width: 100vw;
   height: 100vh;
+  background: url("./medias/desktop.jpeg") center/cover no-repeat,
+              var(--desktop-bg);
+  overflow: hidden;
+  font-family: 'Comic Sans MS', cursive;
+  cursor: default;
 }
 
-#fakeBrowser {
-  border: 4px outset #000;
-  background: lightgray;
-  padding: 3px;
-  width: 80%; 
-  height: 80vh; 
-  box-shadow: 10px 10px 10px #000000;
-}
-
-#browserToolbar {
-  background: lightpink; 
-  padding: 6px 3px;
+/* ── TASKBAR ── */
+#taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 32px;
+  background: linear-gradient(to bottom, #e8b4c8, #d4a0b8);
+  border-top: 2px solid var(--white);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  font-family: 'Times New Roman', serif;
+  font-size: 0.8rem;
+  color: #333;
+  z-index: 500;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
+}
+#taskbarClock {
+  font-weight: bold;
+  letter-spacing: 0.05em;
 }
 
-.toolbarButton {
-  background: #d0d0d0;
-  border: 1px outset #000;
-  padding: 5px 8px;
-  margin-right: 4px;
-  font-family: 'Times New Roman', Times, serif;
+/* ── DESKTOP ICONS ── */
+#desktopIcons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 10;
+}
+.desktopIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  cursor: pointer;
+  padding: 6px 4px;
+  border-radius: 4px;
+  transition: background 0.15s;
+  user-select: none;
+}
+.desktopIcon:hover {
+  background: rgba(255,255,255,0.25);
+}
+.desktopIcon .iconImg {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.desktopIcon span {
+  font-size: 0.7rem;
+  color: white;
+  text-shadow: 1px 1px 3px #000, 0 0 6px #000;
+  text-align: center;
+  font-family: 'Times New Roman', serif;
+}
+.falseAffordance {
   cursor: pointer;
 }
-
-#addressBar {
-  flex-grow: 1;
-  margin: 0 4px;
-  padding: 5px;
-  border: 1px solid #000;
-  font-family: 'Times New Roman', Times, serif;
+.falseAffordance:active {
+  /* nothing happens — intentional */
 }
 
-#UserView {
-  width: 100%;
-  height: calc(100% - 40px); 
-  border: none;
+/* ── WINDOWS ── */
+.window {
+  position: absolute;
+  background: var(--white);
+  border: 2px outset #aaa;
+  box-shadow: 4px 4px 0 #000;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  min-width: 280px;
+  min-height: 160px;
+  resize: both;
+  overflow: hidden;
 }
-
-#splash{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: hotpink;
+.window:focus-within,
+.window.active {
   z-index: 200;
-  color: white;
-  text-align: center;
-  line-height: 90vh;
-  font-family: 'Times New Roman', Times, serif;
+  box-shadow: 6px 6px 0 #000;
 }
 
-#splash.display-none{
-  position: fixed;
+/* Window title bar */
+.windowTitleBar {
+  background: var(--titlebar);
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: move;
+  user-select: none;
+  flex-shrink: 0;
+  border-bottom: 1px solid #ccc;
+}
+.windowTitle {
+  font-family: 'Times New Roman', serif;
+  font-size: 0.85rem;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+  font-weight: bold;
+}
+.windowControls {
+  display: flex;
+  gap: 4px;
+}
+.winBtn {
+  width: 18px;
+  height: 16px;
+  font-size: 0.6rem;
+  border: 1px outset #999;
+  background: var(--gray);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-family: 'Times New Roman', serif;
+}
+.winBtn:hover { background: #ddd; }
+.winBtn.close { background: #ff8080; }
+.winBtn.close:hover { background: #ff4444; }
+
+/* Window body */
+.windowBody {
+  flex: 1;
+  overflow: auto;
+  padding: 0;
+}
+
+/* ── BROWSER TOOLBAR ── */
+#browserToolbar {
+  background: var(--lightpink);
+  padding: 5px 6px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  border-bottom: 1px solid #ccc;
+  flex-shrink: 0;
+}
+.toolbarButton {
+  background: var(--gray);
+  border: 1px outset #aaa;
+  padding: 3px 7px;
+  font-family: 'Times New Roman', serif;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+#addressBar {
+  flex: 1;
+  padding: 3px 6px;
+  border: 1px inset #aaa;
+  font-family: 'Times New Roman', serif;
+  font-size: 0.75rem;
+  background: white;
+}
+
+/* ── BROWSER INNER SITE ── */
+#browserContent {
+  height: 100%;
+  overflow-y: auto;
+  font-family: 'Times New Roman', serif;
+  font-size: 0.9rem;
+}
+.siteNavbar {
+  background: var(--blue);
+  padding: 6px 12px;
+  display: flex;
+  gap: 16px;
+  border-bottom: 1px solid #aaa;
+}
+.siteNavbar a {
+  color: #000080;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.siteNavbar a:hover { color: var(--red); }
+.siteBody {
+  padding: 12px 16px;
+}
+.siteBody h1 { font-size: 1.3rem; margin-bottom: 6px; }
+.siteBody h2 { font-size: 1.1rem; margin: 10px 0 4px; }
+.siteBody h3 { font-size: 1rem; margin: 10px 0 6px; }
+.siteBody p  { margin-bottom: 6px; font-size: 0.85rem; }
+.siteBody ul { margin: 6px 0 10px 20px; }
+.siteBody ul li { margin-bottom: 4px; }
+.siteBody a  { color: #000080; }
+.siteBody hr { border: 1px solid #ccc; margin: 10px 0; }
+.siteImg {
+  max-width: 180px;
+  border: 1px solid #aaa;
+  display: block;
+  margin: 8px 0;
+  cursor: pointer;
+}
+.siteImg:hover { opacity: 0.9; }
+
+/* Comment section */
+#commentSection { margin-top: 10px; }
+#commentFeed p {
+  font-size: 0.8rem;
+  padding: 2px 0;
+  line-height: 1.4;
   opacity: 0;
-  top: 0;
-  left: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.4s ease;
+}
+#commentFeed p.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#commentFeed p.dark { color: #cc0000; }
+#commentFeed p.darker { color: #880000; font-style: italic; }
+#commentFeed p.darkest { color: #550000; font-weight: bold; }
+
+/* ── NOTES WINDOW ── */
+.notesBody {
+  padding: 16px;
+  background: #fffdf6;
+  font-family: 'Times New Roman', serif;
+  overflow-y: auto;
+}
+.noteEntry {
+  border-bottom: 1px dashed #ddd;
+  padding: 12px 0;
+}
+.noteEntry:last-child { border-bottom: none; }
+.noteDate {
+  font-size: 0.7rem;
+  color: var(--darkgray);
+  font-family: 'Comic Sans MS', cursive;
+  display: block;
+  margin-bottom: 4px;
+}
+.noteEntry p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #222;
+}
+
+/* ── RECORDS WINDOW ── */
+.recordsBody {
+  padding: 12px;
+  background: #f5f5f5;
+  font-family: 'Times New Roman', serif;
+  overflow-y: auto;
+}
+.recordsTable {
   width: 100%;
-  height: 100vh;
-  background: black;
-  z-index: -10;
-  color: white;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.recordsTable th {
+  background: var(--lightpink);
+  border: 1px solid #aaa;
+  padding: 6px 8px;
+  text-align: left;
+}
+.recordsTable td {
+  border: 1px solid #ccc;
+  padding: 6px 8px;
+}
+.recordsTable tr:nth-child(even) { background: #f9f0f4; }
+.lockedRow { opacity: 0.7; }
+.lockedRow:hover { cursor: not-allowed; }
+.status.done  { color: green; font-weight: bold; }
+.status.locked { color: #888; }
+.recordsNote {
+  font-size: 0.72rem;
+  color: #999;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* ── MEDIA WINDOW ── */
+.mediaBody {
+  padding: 10px;
+  background: #f0f0f0;
+  overflow-y: auto;
+}
+.mediaGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.mediaThumb {
+  background: white;
+  border: 2px outset #aaa;
+  aspect-ratio: 1;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mediaThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.mediaThumb:hover { border-color: var(--pink); }
+.fakeFolder {
+  font-size: 0.75rem;
   text-align: center;
-  line-height: 90vh;
-  font-family: 'Times New Roman', Times, serif;
-  transition: all 0.5s;
+  flex-direction: column;
+  gap: 4px;
+  color: #333;
+  font-family: 'Times New Roman', serif;
+  background: #e8e8e8;
+  padding: 6px;
+}
+.fakeFolder:active { /* does nothing — intentional */ }
+
+/* ── IN-PAGE POPUP OVERLAY ── */
+#popupOverlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 8000;
 }
 
-@keyframes fadeIn{
-  to{
-    opacity: 1;
-    }
+/* Individual in-page popups */
+.thoughtPopup {
+  position: absolute;
+  background: white;
+  border: 2px outset #888;
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.4);
+  width: 280px;
+  pointer-events: all;
+  font-family: 'Times New Roman', serif;
+  animation: popIn 0.2s ease;
+  z-index: 8001;
+}
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+.thoughtPopup .popupHeader {
+  background: #CFF8F8;
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #aaa;
+  font-size: 0.75rem;
+  font-family: 'Times New Roman', serif;
+}
+.thoughtPopup .popupHeader .popupClose {
+  background: red;
+  color: white;
+  border: none;
+  font-size: 0.65rem;
+  padding: 2px 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.thoughtPopup .popupBody {
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #111;
+  max-height: 200px;
+  overflow: auto;
+}
+.thoughtPopup .popupBody img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.thoughtPopup.imagePopup .popupBody {
+  padding: 6px;
 }
 
-@keyframes fadeOut{
-  to{
-    opacity: 0;
-    }
-}
-
-.fade-in{
-  opacity: 0;
-  animation: fadeIn 1s ease-in forwards;
-}
-
-.lateFade {
-  animation: fadeOut 1s ease-in forwards;
-  animation-delay: 2s;
-}
-.comment p {
-    opacity: 0;
-    transform: translateY(50px);
+/* ── MINIMIZE ANIMATION ── */
+.window.minimized {
+  display: none;
 }

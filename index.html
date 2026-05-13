@@ -1,157 +1,217 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Untitled</title>
-    
-	<link rel="stylesheet" href="style.css">
-    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>G(url)Hood — Sienna Suarez, 2026</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
- <div id="splash" class="lateFade">
- 	<h1 class="fade-in">Welcome to G(url)Hood.</h1>
- </div>
+  <!-- SPLASH SCREEN -->
+  <div id="splash">
+    <div id="splashInner">
+      <h1 class="fade-in">Welcome to G(url)Hood.</h1>
+      <p class="fade-in-delay">by Sienna Suarez, 2026</p>
+    </div>
+  </div>
 
- <div id="fakeBrowser">
-    <div id="browserToolbar">
-        <button class="toolbarButton" id="backButton">&lt;</button>
-        <button class="toolbarButton" id="forwardButton">&gt;</button>
-        <button class="toolbarButton" id="refreshButton">&#x21bb;</button>
-        <button class="toolbarButton" id="homeButton">Home</button>
-        <input type="text" id="addressBar" value="http://www.gurlhood.com/By:_SiennaSuarez_/2026/-">
-        <button class="toolbarButton" id="goButton">Go</button>
+  <div id="desktop">
+
+    <div id="desktopIcons">
+
+      <div class="desktopIcon" data-window="browserWindow">
+        <div class="iconImg">🌐︎</div>
+        <span>browser :p</span>
+      </div>
+
+      <div class="desktopIcon" data-window="notesWindow">
+        <div class="iconImg">📓</div>
+        <span>diary</span>
+      </div>
+
+      <div class="desktopIcon" data-window="recordsWindow">
+        <div class="iconImg">📁</div>
+        <span>sienna's gender change documents</span>
+      </div>
+
+      <div class="desktopIcon" data-window="mediaWindow">
+        <div class="iconImg">[¯◉°]</div>
+        <span>what it feels like to be a girl</span>
+      </div>
+
+      <div class="desktopIcon falseAffordance" title="">
+        <div class="iconImg">🗑</div>
+        <span>to do!</span>
+      </div>
+
+      <div class="desktopIcon falseAffordance" title="">
+        <div class="iconImg">💉</div>
+        <span>HRT Progress</span>
+      </div>
+
     </div>
 
-    <iframe id="UserView" srcdoc="
-    <div class='container'>
-        <div class='navbar'>
-            <!-- Navigation -->
-            <a href='#home'>Home</a>
-            <a href='#news'>News</a>
-            <a href='#contact'>Contact</a>
-            <a href='#about'>About</a>
+    <!-- taskbar -->
+    <div id="taskbar">
+      <span id="taskbarTitle">G(url)Hood — Sienna Suarez</span>
+      <span id="taskbarClock"></span>
+    </div>
+
+    <!--browser window -->
+    <div class="window" id="browserWindow" style="top:60px; left:100px; width:700px; height:520px;">
+      <div class="windowTitleBar" data-window="browserWindow">
+        <span class="windowTitle">my browser :p</span>
+        <div class="windowControls">
+          <button class="winBtn minimize" data-window="browserWindow">─</button>
+          <button class="winBtn maximize" data-window="browserWindow">□</button>
+          <button class="winBtn close" data-window="browserWindow">✕</button>
         </div>
-        
-        <div class='mainContent'>
-            <h1>Welcome to the Simulation!</h1>
-
-            <p>Have fun, click around!</p>
-
-            <img src='./medias/uncanny.jpeg' alt='creepy face'>
-
+      </div>
+      <div class="windowBody">
+        <div id="browserToolbar">
+          <button class="toolbarButton">&lt;</button>
+          <button class="toolbarButton">&gt;</button>
+          <button class="toolbarButton">↻</button>
+          <input type="text" id="addressBar" value="http://www.gurlhood.com/By:_SiennaSuarez_/2026/-" readonly>
+          <button class="toolbarButton falseAffordance">Go</button>
+        </div>
+        <div id="browserContent">
+          <div class="siteNavbar">
+            <a href="#" class="triggerLink">Home</a>
+            <a href="#" class="triggerLink">News</a>
+            <a href="#" class="triggerLink">Contact</a>
+            <a href="#" class="triggerLink">About</a>
+          </div>
+          <div class="siteBody">
+            <h1>CHICKS WITH DICKS</h1>
+            <p>have fun, click around!</p>
+            <img src="./medias/uncanny.jpeg" alt="creepy face" class="siteImg falseAffordance">
             <hr>
-
             <h2>Featured Section</h2>
-
-            <p>Tips!</p>
-            
+            <p>Tips on how to Pass!</p>
             <ul>
-                <li><a href='#'>Beauty 101</a></li>
-                <li><a href='#'>How to become more Attractive!</a></li>
-                <li><a href='#'>Healthy Lifestyle Advice</a></li>
+              <li><a href="#" class="triggerLink">Beauty 101: hor(moan)e speedrun</a></li>
+              <li><a href="#" class="triggerLink">How to become more attractive, you brick!</a></li>
+              <li><a href="#" class="triggerLink">Sugeries that make you more ~Feminine~</a></li>
             </ul>
-            
-            <p>Don't forget to take a break!</p>
-
+            <p>Don't forget to take a break, it can be mentally taxing to be a girl!</p>
             <hr>
-
-            <div class='comment'>
-
-
-           <!-- <h1> Comments & Chat-Box: </h1>
-
-            <p>User1: Loving these new skincare tips! Got my glow on! #glowup</p>
-
-            <p>User2: Just started a vegan diet and I feel amazing! </p>
-            
-            <p>User3: Totally rocking this new yoga routine, feeling great! </p>
-
-            <p>User4: Found the perfect routine for my curly hair, life-changing! </p>
-
-            <p>User5: Love how everyone is sharing their beauty hacks here, so inspiring!</p>
-
-            <p>User6: Does anyone have tips for managing dry skin in winter?</p>
-
-            <p>User7: Struggling with self-esteem today, but these posts give me some hope.</p>
-
-            <p>User8: Trying to find the balance between health and happiness, any advice?</p>
-
-            <p>User9: I sometimes feel overwhelmed by all the beauty standards. </p>
-
-            <p>User10: How do you all stay positive with so much pressure?</p>
-
-            <p>User11: Feeling like I'll never measure up to these beauty standards...</p>
-
-            <p>User12: This is just unrealistic. Why are we promoting this?!</p>
-
-            <p>User13: Everything here is just filters and lies.</p>
-
-            <p>User14: Tired of trying to achieve what’s literally impossible.</p>
-
-            <p>User15: Honestly, this just makes me feel worse about myself.</p>
-
-            <p>User16: Stop spreading toxic positivity. It's harmful!</p>
-
-            <p>User17: Why even bother when you can't look like influencers? It's all lies! </p>
-
-            <p>User18: These standards are just a way to make us spend money on products we don't need.</p>
-
-            <p>User19: Sick of this fake world. I hate that my life is like this.</p>
-
-            <p>User20: This is why mental health issues are on the rise. Thanks, internet.</p>
-
-            <p>User21: People like you make everyone else feel inadequate. This needs to stop!</p>
-
-            <p>User22: You're part of the problem if you keep promoting these unrealistic goals.</p>
-           
-            <p>User23: I feel like nothing I do is ever good enough for people. This is ruining my life!</p>
-    
-            <p>User24: I hate my body.</p>
-            
-            <p>User25: I’m so done. I can’t do this anymore. This is breaking me down completely. </p>
-
-            <p>User26: Why are we even celebrating this fake nonsense? It's disgusting how you manipulate people.</p>
-
-            <p>User27: Just another day of social media pushing toxic standards. You should be ashamed.</p>
-
-            <p>User28: Social media is a plague. You're all sick for supporting this.</p>
-            
-            <p>User29: Hope you're happy with the insecurities you're spreading. Monsters!</p>
-            
-            <p>User30: Unreal standards creating real damage. You're responsible for the harm.</p>
-            
-            <p>User31: Can't even look at myself without hating what I see. </p>
-            
-            <p>User32: Every time I scroll here, I feel worse. Why is this what we have to see every day?</p>
-
-            <p>User33: It's gotten to the point where I can't even enjoy life. I'm constantly comparing myself to these images.</p>
-
-            <p>User34: This isn't just unhealthy, it's destructive. I'm losing myself.</p>
-
-            <p>User35: How much longer until we say enough? This is ruining lives. I'm at my breaking point.</p>
-
-            <p>User36: I'm done. This culture is toxic, and it's too much to bear. I'm leaving this nightmare tonight. </p>
-
-            <p>User37: Overwhelmed by all this. It feels like there's no escape from these impossible expectations. </p>
-
-            <p>User38: This has to stop. I'll make it stop</p>
-    
-            <p>User39: Feeling trapped yet I can't seem to stop.. i think i enjoy this</p>
-            
-            <p>User40: Seriously can't handle this anymore. goodbye.</p> -->
-
+            <div id="commentSection">
+              <h3>Comments & Chat-Box:</h3>
+              <div id="commentFeed"></div>
+            </div>
+          </div>
         </div>
- 
-        </div>
-            
+      </div>
     </div>
-    "></iframe>
-</div>
 
- 
-  </script><script type="text/javascript" src="script.js"></script>
- 
+    <!-- the notes window-->
+    <div class="window" id="notesWindow" style="top:80px; left:200px; width:480px; height:420px; display:none;">
+      <div class="windowTitleBar" data-window="notesWindow">
+        <span class="windowTitle">My Personal Notes</span>
+        <div class="windowControls">
+          <button class="winBtn minimize" data-window="notesWindow">─</button>
+          <button class="winBtn close" data-window="notesWindow">✕</button>
+        </div>
+      </div>
+      <div class="windowBody notesBody">
+        <div class="noteEntry">
+          <span class="noteDate">March 24, 2023</span>
+          <p>Today I wore my own clothes outside for the first time. I couldn't stop shaking. I'm starting hormones next week with my bestfriend. A stranger called me "miss" at work and I cried in the gender neutral bathroom for 10 minutes. Happy crying. I think... cheers to me being 18.</p>
+        </div>
+        <div class="noteEntry">
+          <span class="noteDate">June 16, 2024</span>
+          <p> I suck at writing, especially when it comes to journaling. I Scrolled through Twitter for 2 hours again, while I waited for Idris to come home. I shouldn't do that. Every new bill feels like the floor is disappearing. I keep thinking: what if they take it away. what if i can't get my surgeries on time. I can't go back to being a BOY.</p>
+        </div>
+        <div class="noteEntry">
+          <span class="noteDate">August 31, 2024</span>
+          <p>Someone at work asked if I was "really trans." Like I need to prove it. Like my whole life isn't proof enough. I smiled and said yes. I wanted to say so much more. Today's my moms birthday, i didn't wish her a good one till 11:59.... i wish we.. idk. </p>
+        </div>
+        <div class="noteEntry">
+          <span class="noteDate">Feb 14, 2025</span>
+          <p>Dating is so complicated. I used to always wonder "Do I tell them before? During? What if they're fine with it and then they're not? What if they're fine with it and then something happens to them?" thankfully, i'm with idris and we made it to 1.5 yr n half.. we had the best valentines day ever, i'm so happy that we're good.</p>
+        </div>
+        <div class="noteEntry">
+          <span class="noteDate">March 24, 2025</span>
+          <p>Dysphoria hit bad today. Looked in the mirror for a long time. I'm 20 in fucking china, miles away from some sense of "home", and my nervous system is in shambles because the only person I ever loved cheated on me with a cis girl who looks just like me and lied about it 3x. I want to die..</p>
+        </div>
+        <div class="noteEntry">
+          <span class="noteDate">December 7, 2025</span>
+          <p>Transitioning saved my life. I genuinely believe that. My life has never been better and also so much harder at the same time. Both are true. Both fit.. I finally went back to therapy since my last entry. Dealing with abuse is weird. I'm happier now though, looking forward to my 21st and going on my europe trip. I hate the holidays though.</p>
+        </div>
+        <div class="noteEntry">
+          <span class="noteDate">May 12, 2026</span>
+          <p>Working on my final project. It feels good to slow down and sit with all of this instead of running. I'm still here. I'm still me. That's something. I hate how procastinate though</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== RECORDS WINDOW ===================== -->
+    <div class="window" id="recordsWindow" style="top:100px; left:250px; width:500px; height:460px; display:none;">
+      <div class="windowTitleBar" data-window="recordsWindow">
+        <span class="windowTitle">gender change documents</span>
+        <div class="windowControls">
+          <button class="winBtn minimize" data-window="recordsWindow">─</button>
+          <button class="winBtn close" data-window="recordsWindow">✕</button>
+        </div>
+      </div>
+      <div class="windowBody recordsBody">
+        <table class="recordsTable">
+          <thead>
+            <tr><th>Date</th><th>Record</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>08/2022</td><td>Legal Name Change — Filed</td><td class="status done">✔ Complete</td></tr>
+            <tr><td>11/2022</td><td>HRT — Estradiol Started</td><td class="status done">✔ Active</td></tr>
+            <tr><td>02/2023</td><td>Gender Marker — DMV</td><td class="status done">✔ Updated</td></tr>
+            <tr><td>05/2023</td><td>Gender Marker — Passport</td><td class="status done">✔ Updated</td></tr>
+            <tr class="lockedRow falseAffordance"><td>——</td><td>Facial Feminization Surgery</td><td class="status locked"> Waiting</td></tr>
+            <tr class="lockedRow falseAffordance"><td>——</td><td>Voice Training — Advanced</td><td class="status locked"> In Progress</td></tr>
+            <tr class="lockedRow falseAffordance"><td>——</td><td>Bottom Surgery Consultation</td><td class="status locked"> Pending</td></tr>
+            <tr class="lockedRow falseAffordance"><td>——</td><td>Insurance Coverage — Surgery</td><td class="status locked"> Denied</td></tr>
+          </tbody>
+        </table>
+        <p class="recordsNote">* Some records cannot be completed at this time due to factors outside of my control.</p>
+      </div>
+    </div>
+
+    <!-- photo dump section ayeee-->
+    <div class="window" id="mediaWindow" style="top:120px; left:300px; width:520px; height:460px; display:none;">
+      <div class="windowTitleBar" data-window="mediaWindow">
+        <span class="windowTitle">photo album</span>
+        <div class="windowControls">
+          <button class="winBtn minimize" data-window="mediaWindow">─</button>
+          <button class="winBtn close" data-window="mediaWindow">✕</button>
+        </div>
+      </div>
+      <div class="windowBody mediaBody">
+        <div class="mediaGrid">
+          <div class="mediaThumb triggerLink"><img src="./medias/2a67d3980d749f20131fcccf445b0f82.jpg" alt=""></div>
+          <div class="mediaThumb triggerLink"><img src="./medias/IMG_8422.JPG" alt=""></div>
+          <div class="mediaThumb triggerLink"><img src="./medias/IMG_9375.JPG" alt=""></div>
+          <div class="mediaThumb triggerLink"><img src="./medias/IMG_7639.JPG" alt=""></div>
+          <div class="mediaThumb triggerLink"><img src="./medias/IMG_9586.JPEG" alt=""></div>
+          <div class="mediaThumb triggerLink"><img src="./medias/IMG_9068.JPG" alt=""></div>
+          <div class="mediaThumb triggerLink"><img src="./medias/IMG_8419.JPG" alt=""></div>
+          <div class="mediaThumb triggerLink"><img src="./medias/IMG_7511.JPG" alt=""></div>
+          <div class="mediaThumb triggerLink"><img src="./medias/8c47d937ad03fe1ca727cd932a8ec18d.jpg" alt=""></div>
+          <div class="mediaThumb triggerLink"><img src="./medias/0525c99f31f08b36f2282f4c26693f33.jpg" alt=""></div>
+          <div class="mediaThumb triggerLink"><img src="./medias/IMG_7773.jpg" alt=""></div>
+          <div class="mediaThumb triggerLink"><img src="./medias/IMG_7770.jpg" alt=""></div>
+          <!-- False affordance folders -->
+          <div class="mediaThumb falseAffordance fakeFolder">📁 Private</div>
+          <div class="mediaThumb falseAffordance fakeFolder">📁 Before</div>
+          <div class="mediaThumb falseAffordance fakeFolder">📁 Locked</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end #desktop -->
+
+  <!-- POP-UP OVERLAY CONTAINER (in-page chaos popups) -->
+  <div id="popupOverlay"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
